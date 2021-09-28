@@ -13,18 +13,22 @@ public class Main {
 					"Pedra, papel ou tesoura!!\n\nSelecione uma opção:\n1 - Pedra\n2 - Papel\n3 - Tesoura\n0 - Sair");
 
 			choice = sc.nextInt();
-			int winner = validateChoice(choice, getAiChoice());
+			int aiChoice = getAiChoice();
+			int winner = validateChoice(choice, aiChoice);
 
 			switch (winner) {
 			case 1:
+				System.out.printf("Player - %s\nMáquina - %s\n", choiceToString(choice), choiceToString(aiChoice));
 				System.out.println("Você ganhou!!!\n\nQuer jogar novamente? (1 - Sim, 0 - Não)");
 				choice = sc.nextInt();
 				break;
 			case 2:
+				System.out.printf("Player - %s\nMáquina - %s\n", choiceToString(choice), choiceToString(aiChoice));
 				System.out.println("A máquina venceu!\n\nQuer jogar novamente? (1 - Sim, 0 - Não)");
 				choice = sc.nextInt();
 				break;
 			case 3:
+				System.out.printf("Player - %s\nMáquina - %s\n", choiceToString(choice), choiceToString(aiChoice));
 				System.out.println("Empate.\n\nQuer jogar novamente? (1 - Sim, 0 - Não)");
 				choice = sc.nextInt();
 				break;
@@ -42,6 +46,19 @@ public class Main {
 
 	static int getAiChoice() {
 		return (int) (Math.random() * 3) + 1;
+	}
+
+	static String choiceToString(int choice) {
+		switch (choice) {
+		case 1:
+			return "Pedra";
+		case 2:
+			return "Papel";
+		case 3:
+			return "Tesoura";
+		default:
+			return "Inválido";
+		}
 	}
 
 	static int validateChoice(int player, int ai) {
